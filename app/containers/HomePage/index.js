@@ -5,9 +5,10 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Desktop from 'components/Desktop';
+import { WindowsProvider } from 'components/WindowContext';
 import TaskBar from '../../components/TaskBar';
 
 const Main = styled.div`
@@ -20,9 +21,11 @@ const Main = styled.div`
 
 export default function HomePage() {
   return (
-    <Main>
-      <Desktop />
-      <TaskBar />
-    </Main>
+    <WindowsProvider>
+      <Main>
+        <Desktop />
+        <TaskBar />
+      </Main>
+    </WindowsProvider>
   );
 }

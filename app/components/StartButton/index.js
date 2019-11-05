@@ -4,10 +4,11 @@
  *
  */
 
-import React from 'react';
+import React, { useContext } from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Icon } from '@react95/core';
+import { Icon, List } from '@react95/core';
+import { WindowsContext } from 'components/WindowContext';
 
 const Wrapper = styled.div`
   width: 70px;
@@ -56,17 +57,16 @@ const Text = styled.span`
   user-select: none;
 `;
 
-function StartButton() {
+const StartButton = props => {
+  const [menuOpen, setMenuOpen] = useContext(WindowsContext).menu;
   return (
-    <Wrapper>
+    <Wrapper onClick={() => setMenuOpen(prevState => !prevState)}>
       <Button>
         <Icon name="logo" height={15} width={15} />
         <Text>Start</Text>
       </Button>
     </Wrapper>
   );
-}
-
-StartButton.propTypes = {};
+};
 
 export default StartButton;
